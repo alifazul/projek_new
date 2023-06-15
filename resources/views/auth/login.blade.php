@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="d-md-flex half">
-        <div class="bg" style="background-image: url('logreg/images/bg_1.jpg');"></div>
+        <div class="bg" style="background-image: url('logreg/images/bg_2.jpg'); background-size: 1000 px;"></div>
         <div class="contents">
             <div class="container">
                 <div class="align-items-center justify-content-center">
@@ -43,7 +43,7 @@
                                 </div>
                                 <input type="submit" value="LOGIN" class="btn btn-primary">
                                 <div class="d-sm-flex align-items-center setlink">
-                                    <span class="mx-auto"><span class="setreg">Belum Memiliki Akun?</span><a href="#" class="link-reg">Register</a></span>
+                                    <span class="mx-auto"><span class="setreg">Belum Memiliki Akun?</span><a href="{{ route('register') }}" class="link-reg">Register</a></span>
                                 </div>
                             </form>
                         </div>
