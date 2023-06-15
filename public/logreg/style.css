@@ -1,0 +1,173 @@
+
+:root {
+    --pr-color : #394EAC;
+}
+body {
+    font-family: Poppins;
+    background-color: #FFF;
+}
+
+
+.navbar{
+    z-index: 3;
+}
+
+*{
+    z-index: 2;
+}
+.navbar-brand{
+    font-weight: 700;
+    font-size: 25px;
+    color: black;
+}
+
+.nav-link{
+    font-size: 16px;;
+}
+
+.button-primary, .button-secondary{
+    width: 133px;
+    height: 40px;
+    background-color: #fff;
+    color: #7477D9;
+    border: none;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+/*hero*/
+#hero{
+    background: #7477D9;
+    height: 100vh;
+    width: 100%;
+}
+
+.img-hero{
+    height: 50%;
+    z-index: 1;
+}
+
+.arrow{
+    width: 10px;
+    height: 20px;
+    margin-left: 50px;
+}
+
+.hero-tagline h1{
+    color: #fff;
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 72px;
+}
+
+.hero-tagline p{
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 60px;
+    margin-top: 20px;
+    line-height: 30px;
+    width: 85%;
+}
+
+.button-lg-primary{
+    width: 180px;
+    height: 50px;
+    background-color: #FFF;
+    color: var(--pr-color);
+    border: none;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/*card kategori*/
+#kategori{
+    padding: 100px 0;
+}
+h2{
+    font-size: 38px;
+    font-weight: 600;
+    color: #394EAC;
+}
+.card h5{
+    color: #FFF;
+    font-size: 30px;
+    font-weight: 600;
+}
+.card button{
+    background-color: #394EAC;
+    color: #FFF;
+    border: none;
+    width: 130px;
+    height: 45px;
+    font-size: 16px;
+    font-weight: 500;
+}
+.card .overlay{
+    background-color: rgba(0, 0, 0, 0);
+    opacity: 0;
+    transition: all ease-in-out .3s;
+}
+.card .overlay:hover{
+    background-color: rgba(0,0,0,0.6);
+    opacity: 1;
+}
+
+/*section cari*/
+
+#search {
+    background-image: url(../logreg/images/laptop.jpg);
+    height: 100vh;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#search h2{
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 72px;
+    text-align: center;
+    color: #fff;
+}
+
+#search p{
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 36px;
+    text-align: center;
+    color: #fff;
+}
+
+.input-cari{
+    height: 50px;
+    
+}
+
+.input-cari .button-primary{
+    height: 50px;
+    background-color: var(--pr-color);
+    color: #FFF;
+    border: none;
+    font-size: 20px;
+    font-weight: 500;
+    border-radius: 0 10px 0 10px;
+}
+
+.nav-tabs{
+    border: none;
+}
+
+.nav-tabs .nav-link{
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 0 0 0 0;
+}
+.nav-tabs .nav-link.active{
+    background-color: rgba(255, 255, 255, 0.5);
+    color: var(--pr-color);
+    border-radius: 0 9px 0 0;
+    font-weight: 500;
+}
+.nav-tabs .nav-link{
+    color: #000;
+    border: none;
+}
