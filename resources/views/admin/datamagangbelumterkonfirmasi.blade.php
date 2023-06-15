@@ -1,0 +1,1 @@
+{{ ('Ini tampilan data magang belum terkonfirmasi')}}
