@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Models\Profil;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Psy\Readline\Hoa\Console;
 
 class RegisterController extends Controller
 {
@@ -47,7 +49,7 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
+   protected function validator(array $data)
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
@@ -64,13 +66,28 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
+        $email = $data['email'];
         $user =  User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'password' => Hash::make($data['password'])
         ]);
 
+        if($user){
+        $id_user = User::where('email',$email)->get('id');
+        foreach($id_user as $id){
+        Profil::create([
+            'id_user'=>$id->id,
+            'nama' => $data['name'],
+            'email' => $data['email']
+        ]);
+        }
+        }
         $user->assignRole('pengunjung');
         return $user;
     }
+  
 }
+
+
