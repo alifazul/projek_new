@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use App\Models\Magang;
+use App\Models\Profil;
 
 class LoginController extends Controller
 {
@@ -27,7 +29,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    //protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -37,11 +39,25 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+        return redirect()->route('login');
     }
+    
     public function authenticated(Request $request, $user){
         if($user->HasRole('admin')){
-            return view('admin.index');
+            return redirect()->route('admin.index');
+        }else if($user->HasRole('pengunjung')){
+            return redirect()->route('home');
         }
-        return redirect()->route('homeprofil');
+        
+    }
+    protected function redirectTo(Request $request)
+    {
+        if ( $request->user()->hasAnyRole(['admin']) ) {
+            return route('admin.dashboard');
+        } else if( $request->user()->hasAnyRole(['pengunjung']) ) {
+            return route('homeprofil');
+        }
+
+        return '/home';
     }
 }
