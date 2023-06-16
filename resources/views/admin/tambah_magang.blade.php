@@ -94,8 +94,9 @@
                                                 </div>
                                                 <div class="form-group col-md-12">
                                                     <label>Deskripsi(optional)</label>
-                                                    <textarea class="form-control" rows="2" name="deskripsi" value="{{ old('deskripsi')}}"></textarea>
+                                                    <textarea class="form-control" rows="2" name="deskripsi" value="{{ old('deskripsi') }}"></textarea>
                                                 </div>
+                                                @role('admin')
                                                 <div class="form-group col-md-12">
                                                 <label>Status</label>
                                                 <select class="form-control select" name="status" style="width: 100%;">
@@ -103,6 +104,7 @@
                                                     <option value="draft">Draf</option>
                                                 </select>
                                                 </div>
+                                                @endrole
                                             </div>
                                         </div>
                                         <div class="my-md-4 pt-md-1 border-top"> </div>
