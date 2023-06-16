@@ -15,7 +15,7 @@
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 Data Magang
                                             </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">10</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $magang }}</div>
                                             <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                                         </div>
                                         <div class="col-auto">
@@ -35,7 +35,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 Data Pengguna</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">5</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $user }}</div>
                                             <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                                         </div>
                                         <div class="col-auto">
@@ -56,7 +56,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
                                                 Magang belum dikonfirmasi</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">2</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $magangnot }}</div>
                                             <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                                         </div>
                                         <div class="col-auto">
