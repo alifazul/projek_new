@@ -6,44 +6,48 @@
 
         <title>GrowthSpace</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+    
 
         <!-- Styles -->
         <link href="logreg/style.css" rel="stylesheet">
+       
         
     </head>
     <body class="antialiased">
         <nav class="navbar navbar-expand-lg navbar-light bg-light position-fixed w-100">
-        @if (Route::has('login'))
+        
             <div class="container">
                 <a class="navbar-brand" href="{{url ('/home')}}">GrowthSpace</a>
-                @auth
+                
                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>
-                @else
+                
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav mx-auto">   
                             <a class="nav-link active mx-2" aria-current="page" href="{{url ('/home')}}">Beranda</a>
-                            <a class="nav-link mx-2" href="#">Info Magang</a>
-                            <a class="nav-link mx-2" href="#">Lihat Profil</a>
+                            <a class="nav-link mx-2" href="{{ route('magang.lihat') }}">Info Magang</a>
+                            <a class="nav-link mx-2" href="{{ route('profile.edit') }}">Lihat Profil</a>
                         </div>
                         <div>
                         
-                            <a href="{{route('login')}}"><button class="button-primary">Masuk</button></a>
-                            @if (Route::has('register'))
-                            <a href="{{route('register')}}"><button class="button-secondary">Daftar</button></a>
-                            @endif
-                        @endauth
+                           
+                            <a href="{{route('logout')}}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form><button class="button-secondary">LogOut</button></a>
+                            
+                        
                         </div>
-                        @endif
+                        
                     </div>
                     
                 </div>
-            </nav>
+        </nav>
 
         <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
             
@@ -55,8 +59,8 @@
       <div class="col-md-6 hero-tagline my-auto">
         <h1>Selamat Datang di GrowthSpace!</h1>
         <p>Website yang memudahkan kamu untuk mencari tempat Magang di Indonesia</p>
-        <a href="{{url('/carimagang')}}"><button class="button-lg-primary">Temukan Magang</button></a>
-        <a href="{{url('/carimagang')}}"><img clas="arrow" src="logreg/images/Vector.png"></a>
+        <a href="{{ route('magang.lihat') }}"><button class="button-lg-primary">Temukan Magang</button></a>
+        <a href="{{ route('magang.lihat') }}"><img clas="arrow" src="logreg/images/Vector.png"></a>
       </div>
     </div>
 
