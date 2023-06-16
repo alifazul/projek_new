@@ -23,7 +23,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Custom fonts for this template-->
-   
+   @yield('datatable')
 
 </head>
 
@@ -39,14 +39,14 @@
                     GrowthSpace
                 </a>
                 <li>
-                    <a href="{{ route('admin.dashboard') }}"><i class="fas fa-fw fa-tachometer-alt"></i> Dashboard</a>
+                    <a href="{{ route('admin.index') }}"><i class="fas fa-fw fa-tachometer-alt"></i> Dashboard</a>
                 </li>
 
                 <li>
                     <a href="{{ route('magang.index') }}"><i class="fas fa-fw fa-folder"></i> Manajemen Magang</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fas fa-fw fa-users"></i> Manajemen Pengguna</a>
+                    <a href="{{ route('user.index') }}"><i class="fas fa-fw fa-users"></i> Manajemen Pengguna</a>
                 </li>
             </ul>
         </div>
@@ -171,7 +171,9 @@
     <script src="{{ asset('admin/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="{{ asset('admin/js/sb-admin-2.min.js"></script>
+    <script src="{{ asset('admin/js/sb-admin-2.min.js') }}"></script>
+
+     @yield('tabelj')
 
     <script type="text/javascript">
         $(document).ready(function() {
