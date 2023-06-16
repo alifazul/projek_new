@@ -16,7 +16,7 @@
                                     
                                     <form class="needs-validation" action="{{ route('magang.update', $magang->id) }}" method="post" enctype="multipart/form-data" novalidate>
                                     @csrf
-                                    @method('PUT')
+                                    @method('POST')
                                     <div class="row">
                                             <div class="col">
                                             <input type="hidden" name="id_user" value="{{ old('id_user', $magang->user_id) }}">
@@ -38,9 +38,9 @@
                                                 <div class="form-group col-md-12">
                                                 <label>Tipe</label>
                                                 <select class="form-control select2" name="tipe" style="width: 100%;">
-                                                    <option value="WFH">WFH</option>
-                                                    <option value="WFO">WFO</option>
-                                                    <option value="Hybrid">Hybrid</option>
+                                                    <option value="WFH" {{ old('tipe', $magang->tipe) == 'WFH' ? 'selected':'' }}>WFH</option>
+                                                    <option value="WFO" {{ old('tipe', $magang->tipe) == 'WFO' ? 'selected':'' }}>WFO</option>
+                                                    <option value="Hybrid" {{ old('tipe',$magang->tipe) == 'Hybrid' ? 'selected':'' }}>Hybrid</option>
                                                 </select>
                                                 </div>
                                             </div>
@@ -80,8 +80,8 @@
                                                 <div class="form-group col-md-12">
                                                 <label>Sertifikat</label>
                                                 <select class="form-control select2" name="sertifikat" style="width: 100%;">
-                                                    <option value="iya">iya</option>
-                                                    <option value="tidak">tidak</option>
+                                                    <option value="iya" {{ old('sertifikat', $magang->sertifikat) == 'iya' ? 'selected':'' }}>iya</option>
+                                                    <option value="tidak" {{ old('sertifikat', $magang->sertifikat) == 'tidak' ? 'selected':'' }}>tidak</option>
                                                 </select>
                                                 </div>
                                                 <div class="form-group col-md-12">
@@ -91,10 +91,14 @@
                                                 <div class="form-group col-md-12">
                                                 <label>Status</label>
                                                 <select class="form-control select" name="status" style="width: 100%;">
+                                                <?php if($magang->status=='publish' or $magang->status=='draft'){ ?>
                                                 <option value="publish" {{ old('status', $magang->status) == 'publish' ? 'selected':'' }} >Publish</option>  
-                                                <option value="draft" {{ old('status', $magang->status) == 'draft' ? 'selected':'' }} >Draft</option>  
+                                                <option value="draft" {{ old('status', $magang->status) == 'draft' ? 'selected':'' }} >Draft</option>
+                                                <?php } else { ?>
+                                                    <option value="publish" {{ old('status', $magang->status) == 'publish' ? 'selected':'' }} >Publish</option>  
                                                 <option value="pending" {{ old('status', $magang->status) == 'pending' ? 'selected':'' }} >Pending</option>  
-                                                <option value="rejected" {{ old('status', $magang->status) == 'rejected' ? 'selected':'' }} >Rejected</option>  
+                                                <option value="rejected" {{ old('status', $magang->status) == 'rejected' ? 'selected':'' }} >Rejected</option> 
+                                                <?php } ?> 
                                                 </select>
                                                 </div>
                                             </div>
