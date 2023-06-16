@@ -63,5 +63,9 @@
         <th>Deskripsi</th>
         <td>{{ $data_magang->deskripsi }}</td>
     </tr>
+    <tr>
+        <th>Deskripsi</th>
+        <td>{{ $data_magang->status }}</td>
+    </tr>
 </table>
 @endsection
