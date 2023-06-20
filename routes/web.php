@@ -61,9 +61,6 @@ Route::group(['middleware' => ['role:admin']],function () {
         Route::get('', 'index')->name('user.index');
         Route::get('create', 'create')->name('user.create');
         Route::post('store', 'store')->name('user.store');
-        Route::get('detail/{id}', 'show')->name('user.show');
-        Route::get('edit/{id}', 'edit')->name('user.edit');
-        Route::post('edit/{id}', 'update')->name('user.update');
         Route::get('hapus/{id}', 'destroy')->name('user.destroy');
     });
 });
@@ -76,6 +73,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profil', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/magang/tambah', [MagangController::class,'tambah'])->name('magang.tambah');
     Route::post('/magang/tambah', [MagangController::class,'simpan'])->name('magang.simpan');
+     Route::get('/magang/edit/{id}', [MagangController::class,'ubah'])->name('magang.ubah');
+    Route::post('/magang/edit/{id}', [MagangController::class,'change'])->name('magang.change');
+    Route::get('/magang/hapus/{id}', [MagangController::class,'hapus'])->name('magang.hapus');
     Route::get('password', [PasswordController::class,'edit'])->name('user.password.edit');
     Route::patch('password', [PasswordController::class,'update'])->name('user.password.update');
     Route::get('profile', [ProfileController::class,'editu'])->name('profile.edit');
