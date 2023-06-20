@@ -19,7 +19,7 @@ class MagangController extends Controller
     }
     public function index(): View
     {
-        $magang = Magang::latest()->paginate(7);
+        $magang = Magang::all();
         return view('admin.tabelmagang', compact('magang'));
     }
     
@@ -28,17 +28,12 @@ class MagangController extends Controller
         $user_id = Auth::user()->id;
          return view('admin.tambah_magang', compact('user_id'));
     }
+
     public function tambah(): View
     {
         $user_id = Auth::user()->id;
         $magang = Magang::where('user_id',$user_id)->get();
-        
         return view('layouts.tambahmagang', compact('user_id','magang'));
-    }
-    public function getmagang(): View
-    {
-        $magang = Magang::where('status','pending')->get()->paginate(5);
-        return view('admin.tabelmagang', compact('magang'));
     }
     
     public function show($id): View
@@ -61,6 +56,7 @@ class MagangController extends Controller
             'mulai_magang'=>'required',
             'provinsi'=>'required',
             'kabupaten'=>'required',
+            'kontak'=> 'required',
             'link_daftar'=>'required',
             'status'=>'required',
         ]);
@@ -92,7 +88,7 @@ class MagangController extends Controller
         }else if($status=='pending'){
             Alert::success('Selamat', 'Data Berhasil Dikirim');
         }
-        return redirect()->route('profile.edit');
+        return redirect()->route('magang.tambah');
     }
 
     public function store(Request $request): RedirectResponse
@@ -109,6 +105,7 @@ class MagangController extends Controller
             'mulai_magang'=>'required',
             'provinsi'=>'required',
             'kabupaten'=>'required',
+            'kontak'=> 'required',
             'link_daftar'=>'required',
             'status'=>'required',
         ]);
@@ -143,6 +140,62 @@ class MagangController extends Controller
         return redirect()->route('magang.index');
     }    
 
+    public function ubah($id): View
+    {
+        $magang = Magang::findOrFail($id);
+        return view('layouts.editmagang', compact('magang'));
+    }
+
+    public function change(Request $request, $id): RedirectResponse
+    {
+        $this->validate($request,[
+            'posisi'=>'required',
+            'perusahaan'=>'required',
+            'pendidikan'=>'required',
+            'tipe'=>'required',
+            'sertifikat'=>'required',
+            'durasi'=>'required',
+            'deadline'=>'required',
+            'pengumuman'=>'required',
+            'mulai_magang'=>'required',
+            'provinsi'=>'required',
+            'kabupaten'=>'required',
+            'kontak'=> 'required',
+            'link_daftar'=>'required',
+            'status'=>'required'
+        ]);
+
+        $magang = Magang::findOrFail($id);
+
+        $magang->update([
+            'user_id'=>$request->id_user,
+            'posisi' => $request->posisi,
+            'perusahaan' => $request->perusahaan,
+            'pendidikan' => $request->pendidikan,
+            'tipe' => $request->tipe,
+            'sertifikat' => $request->sertifikat,
+            'durasi' => $request->durasi,
+            'deadline' => $request->deadline,
+            'pengumuman' => $request->pengumuman,
+            'mulai_magang' => $request->mulai_magang,
+            'provinsi' => $request->provinsi,
+            'kabupaten' => $request->kabupaten,
+            'link_daftar' => $request->link_daftar,
+            'kontak' => $request->kontak,
+            'deskripsi' => $request->deskripsi,
+            'status'=>$request->status
+        ]);
+        Alert::success('Berhasil', 'Data Berhasil Diubah');
+        return redirect()->route('magang.tambah');
+    }
+
+    public function hapus($id): RedirectResponse
+    {
+        $magang = Magang::findOrFail($id);
+        $magang->delete();
+        Alert::success('Berhasil', 'Data Berhasil Dihapus');
+        return redirect()->route('magang.tambah');
+    }
     public function edit($id): View
     {
         $magang = Magang::findOrFail($id);
@@ -192,5 +245,6 @@ class MagangController extends Controller
         $magang->delete();
         Alert::success('Berhasil', 'Data Berhasil Dihapus');
         return redirect()->route('magang.index');
+
     }
 }
